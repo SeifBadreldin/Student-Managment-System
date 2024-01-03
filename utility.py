@@ -45,17 +45,12 @@ def entercode(items):
         return code
      
 
-def writecsv(items,filepath):
-    file=open(filepath,"w")
-    file.write(items)
-    file.close()
-    return
+def write_csv(filename, fieldnames, data):
+    with open(filename, 'a', newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writerow(data)
 
-def Readcsv(filepath):
-    if os.path.exists(filepath):
-        file=open(filepath,"r")
-        items=file.readlines()
-        file.close()
-        return items
-    else:
-        return [] 
+def read_csv(filename):
+    with open(filename, 'r') as file:
+        reader = csv.DictReader(file)
+        return list(reader)

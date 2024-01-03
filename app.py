@@ -12,6 +12,7 @@ while True:
     "2":"course information",
     "3":"grade informaion" ,
     "4":"Exit"})
+
     if main_choice == "1":
             liststudents()
             print("==============")
@@ -56,11 +57,26 @@ while True:
             print("wrong choice,try again!...")
 
 
-    if main_choice=="3":supply_grades()
+    if main_choice=="3":
+         print("==============")
+         print("Student Management System Operation ")
+         print("==============")
+         print("1. Add Grade")
+         print("2. Edit Grade")
+         print("3. View Grade")
+         print("4. delete Grade")
+         print("5. Exit")
+         print("==============")
+         second_operator=int(input("enter the operator you need: "))
+         if second_operator>=1 and second_operator<=5:
+            if second_operator==1:add_grade()
+            elif second_operator==2:edit_grade()
+            elif second_operator==3:view_grade()
+            elif second_operator==4:delete_grade()
+            elif second_operator==5: break
+            input("press any key to continue...")
+         else:
+            print("wrong choice,try again!...")
     
-        
-
-
-
 
     if main_choice=="4":break
