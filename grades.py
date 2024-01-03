@@ -56,74 +56,28 @@ def add_grade():
     data = {"Name": students[student_code]["name"], "ID": student_code, "Course Code": course_code, "Course Name": courses[course_code]["name"], "Grade": f"{grade}%", "Grade Letter": grade_letter}
     write_csv("grades.csv", data.keys(), data)
     print("Grade Added Successfully")
-
-
+    
 def edit_grade():
-    students = ReadJson("students.json")
-    courses = ReadJson("courses.json")
-    student_code = get_valid_code("Enter student code: ", students)
-    course_code = get_valid_code("Enter course code: ", courses)
-    new_grade = set_grade()
-    new_grade_letter = calculate_grade_letter(new_grade)
-    grades = []
-    student_exists = False
-    course_exists = False
-    with open('grades.csv', 'r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            if row["ID"] == student_code:
-                student_exists = True
-                if row["Course Code"] == course_code:
-                    course_exists = True
-                    row["Grade"] = f"{new_grade}%"
-                    row["Grade Letter"] = new_grade_letter
-            grades.append(row)
-    if not student_exists:
-        print("Student not found in the file.")
-        return
-    if not course_exists:
-        print("The student has not taken this course.")
-        return
-    write_csv('grades.csv', grades[0].keys(), grades)
+    grades = read_csv("grades.csv")
+    student_code = get_valid_code("Enter student code: ", grades)
+    course_code = get_valid_code("Enter course code: ", grades)
+    grade = set_grade()
+    grade_letter = calculate_grade_letter(grade)
+    grades[student_code][course_code] = {"Grade": f"{grade}%", "Grade Letter": grade_letter}
+    write_csv("grades.csv", grades.keys(), grades)
     print("Grade Edited Successfully")
 
 def view_grade():
-    students = ReadJson("students.json")
-    courses = ReadJson("courses.json")
-    student_code = get_valid_code("Enter student code: ", students)
-    course_code = get_valid_code("Enter course code: ", courses)
-    grades = read_csv('grades.csv')
-    for grade in grades:
-        if grade["ID"] == student_code and grade["Course Code"] == course_code:
-            print(f"Student Name: {grade['Name']}")
-            print(f"Course Name: {grade['Course Name']}")
-            print(f"Grade: {grade['Grade']}")
-            print(f"Grade Letter: {grade['Grade Letter']}")
-            return
-    print("No grade found for this student in this course.")
+    grades = read_csv("grades.csv")
+    student_code = get_valid_code("Enter student code: ", grades)
+    course_code = get_valid_code("Enter course code: ", grades)
+    print("Grade: ", grades[student_code][course_code]["Grade"])
+    print("Grade Letter: ", grades[student_code][course_code]["Grade Letter"])
 
 def delete_grade():
-    students = ReadJson("students.json")
-    courses = ReadJson("courses.json")
-    student_code = get_valid_code("Enter student code: ", students)
-    course_code = get_valid_code("Enter course code: ", courses)
-    grades = []
-    student_exists = False
-    course_exists = False
-    with open('grades.csv', 'r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            if row["ID"] == student_code:
-                student_exists = True
-                if row["Course Code"] == course_code:
-                    course_exists = True
-                else:
-                    grades.append(row)
-    if not student_exists:
-        print("Student not found in the file.")
-        return
-    if not course_exists:
-        print("The student has not taken this course.")
-        return
-    write_csv('grades.csv', grades[0].keys(), grades)
+    grades = read_csv("grades.csv")
+    student_code = get_valid_code("Enter student code: ", grades)
+    course_code = get_valid_code("Enter course code: ", grades)
+    del grades[student_code][course_code]
+    write_csv("grades.csv", grades.keys(), grades)
     print("Grade Deleted Successfully")

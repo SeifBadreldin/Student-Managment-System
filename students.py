@@ -11,23 +11,6 @@ def liststudents():
         print("{}:{}".format(code,student["name"]))
 
 
-def view_student():
-    global students
-    while True:
-        code=(input("enter the code: "))
-        students=ReadJson("students.json")
-        if code in students.keys():       
-            print("==============")
-            student = students[code]
-            print("code:{}".format(student["code"]))
-            print("name:{}".format(student["name"]))
-            print("Birthdate:{}".format(student["Birthdate"]))
-            print("age:{}".format(student["age"]))
-            print("country:{}".format(student["country"]))
-            break
-        else:
-             print("sorry code not exisit,try again...")
-   
 
 def add_student():
     global students
@@ -58,6 +41,24 @@ def edit_student():
         writeJson(students , "students.json")
     else:
         print("sorry code not exisit,try again...")
+
+def view_student():
+    global students
+    while True:
+        code=(input("enter the code: "))
+        students=ReadJson("students.json")
+        if code in students.keys():       
+            print("==============")
+            student = students[code]
+            print("code:{}".format(student["code"]))
+            print("name:{}".format(student["name"]))
+            print("Birthdate:{}".format(student["Birthdate"]))
+            print("age:{}".format(student["age"]))
+            print("country:{}".format(student["country"]))
+            break
+        else:
+             print("sorry code not exisit,try again...")
+   
 
 def delete_student():
     global students
