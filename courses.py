@@ -1,5 +1,7 @@
 from utility import *
+
 courses={}
+
 def liststcourses():
     global courses
     courses=ReadJson("courses.json")
@@ -8,7 +10,6 @@ def liststcourses():
     for code in courses.keys():
         course=courses[code]
         print("{}:{}".format(code,course["name"]))
-
 
 def view_course():
     global courses
@@ -24,7 +25,6 @@ def view_course():
             break
         else:
              print("sorry code not exisit,try again...")
-
 
 def add_course():
     global students
@@ -51,7 +51,6 @@ def edit_course():
         courses[code]=courses
         writeJson(courses, "courses.json")
     else:print("sorry code not exisit,try again...")
-
 
 def delete_course():
     global courses

@@ -13,16 +13,12 @@ def process_menu(items):
             else:
                 print("wrong choice , try again !...")
 
-
-
 def writeJson(items,filepath):
     file=open(filepath,"w")
     data=json.dumps(items)
     file.write(data)
     file.close()
     return
-
-
 
 def ReadJson(filepath):
     if os.path.exists(filepath):
@@ -34,7 +30,6 @@ def ReadJson(filepath):
     else:
         return [] 
 
-
 def entercode(items):
      while True:
         code=(input("enter the code: "))
@@ -44,7 +39,6 @@ def entercode(items):
         print("==============")
         return code
      
-
 def WriteCsv(filename, fieldnames, data):
     with open(filename, 'a', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=fieldnames)

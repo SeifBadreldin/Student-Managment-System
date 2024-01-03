@@ -1,16 +1,17 @@
 from utility import *
 from students import *
 from courses import *
-from grades import*
+from grades import *
+
 while True:
     os.system("cls")
     print("============")
-    print("Students Mangement System Program")
+    print("Students Management System Program")
     print("============")
     main_choice=process_menu({
     "1":"student information",
     "2":"course information",
-    "3":"grade informaion" ,
+    "3":"grade information" ,
     "4":"Exit"})
 
     if main_choice == "1":
@@ -80,3 +81,4 @@ while True:
     
 
     if main_choice=="4":break
+
