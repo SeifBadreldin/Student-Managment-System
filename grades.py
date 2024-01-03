@@ -54,30 +54,30 @@ def add_grade():
     grade = set_grade()
     grade_letter = calculate_grade_letter(grade)
     data = {"Name": students[student_code]["name"], "ID": student_code, "Course Code": course_code, "Course Name": courses[course_code]["name"], "Grade": f"{grade}%", "Grade Letter": grade_letter}
-    write_csv("grades.csv", data.keys(), data)
+    WriteCsv("grades.csv", data.keys(), data)
     print("Grade Added Successfully")
     
 def edit_grade():
-    grades = read_csv("grades.csv")
+    grades = ReadCsv("grades.csv")
     student_code = get_valid_code("Enter student code: ", grades)
     course_code = get_valid_code("Enter course code: ", grades)
     grade = set_grade()
     grade_letter = calculate_grade_letter(grade)
     grades[student_code][course_code] = {"Grade": f"{grade}%", "Grade Letter": grade_letter}
-    write_csv("grades.csv", grades.keys(), grades)
+    WriteCsv("grades.csv", grades.keys(), grades)
     print("Grade Edited Successfully")
 
 def view_grade():
-    grades = read_csv("grades.csv")
+    grades = ReadCsv("grades.csv")
     student_code = get_valid_code("Enter student code: ", grades)
     course_code = get_valid_code("Enter course code: ", grades)
     print("Grade: ", grades[student_code][course_code]["Grade"])
     print("Grade Letter: ", grades[student_code][course_code]["Grade Letter"])
 
 def delete_grade():
-    grades = read_csv("grades.csv")
+    grades = ReadCsv("grades.csv")
     student_code = get_valid_code("Enter student code: ", grades)
     course_code = get_valid_code("Enter course code: ", grades)
     del grades[student_code][course_code]
-    write_csv("grades.csv", grades.keys(), grades)
+    WriteCsv("grades.csv", grades.keys(), grades)
     print("Grade Deleted Successfully")
