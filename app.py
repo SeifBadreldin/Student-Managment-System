@@ -28,7 +28,7 @@ while True:
                 elif second_operator==2:edit_student()
                 elif second_operator==3:view_student()
                 elif second_operator==4:delete_student()
-                elif second_operator==5: break
+                elif second_operator==5: continue
                 input("press any key to continue...")
             else:
                 print("wrong choice,try again!...")
@@ -51,7 +51,7 @@ while True:
             elif second_operator==2:edit_course()
             elif second_operator==3:view_course()
             elif second_operator==4:delete_course()
-            elif second_operator==5: break
+            elif second_operator==5: continue
             input("press any key to continue...")
         else:
             print("wrong choice,try again!...")
@@ -73,7 +73,7 @@ while True:
             elif second_operator==2:edit_grade()
             elif second_operator==3:view_grade()
             elif second_operator==4:delete_grade()
-            elif second_operator==5: break
+            elif second_operator==5: continue
             input("press any key to continue...")
          else:
             print("wrong choice,try again!...")
