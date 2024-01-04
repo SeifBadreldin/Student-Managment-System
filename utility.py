@@ -39,12 +39,14 @@ def entercode(items):
         print("==============")
         return code
      
-def WriteCsv(filename, fieldnames, data):
-    with open(filename, 'a', newline='') as file:
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writerow(data)
-
-def ReadCsv(filename):
-    with open(filename, 'r') as file:
-        reader = csv.DictReader(file)
+def read_csv(filename):
+    with open(filename, 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
         return list(reader)
+
+def write_csv(filename, data):
+    with open(filename, 'w', newline='') as csvfile:
+        fieldnames = data[0].keys()
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(data)

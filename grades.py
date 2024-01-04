@@ -76,24 +76,48 @@ def add_grade():
     print("Grade Added Successfully")
 
 def edit_grade():
-  students
+    students = ReadJson("students.json")
+    courses = ReadJson("courses.json")
+    student_code = get_valid_code("Enter student code: ", students)
+    course_code = get_valid_code("Enter course code: ", courses)
+    filename = f"{course_code}.csv"
+    if os.path.isfile(filename):
+        data = read_csv(filename)
+        for row in data:
+            if row["ID"] == student_code and row["Course Code"] == course_code:
+                print("Current grade: ", row["Grade"])
+                grade = set_grade()
+                grade_letter = calculate_grade_letter(grade)
+                row["Grade"] = grade_letter
+        write_csv(filename, data)
+        print("Grade Edited Successfully")
+    else:
+        print("No grades found for this course.")
 
 def view_grade():
     students = ReadJson("students.json")
     courses = ReadJson("courses.json")
     student_code = get_valid_code("Enter student code: ", students)
     course_code = get_valid_code("Enter course code: ", courses)
-    grades = ReadCsv(f"{course_code}.csv")
-    for row in grades:
-        if row["ID"] == student_code and row["Course Code"] == course_code:
-            print("ID: {}".format(row["ID"])) 
-            print("Course Code: {}".format(row["Course Code"]))
-            print("Grade Letter: {}".format(row["Grade Letter"]))
-            break
-    else:
-        print("No matching grade found.")
+    filename = f"{course_code}.csv"
+    if os.path.isfile(filename):
+        data = read_csv(filename)
+        for row in data:
+            if row["ID"] == student_code and row["Course Code"] == course_code:
+                print("Grade: ", row["Grade"])
+                return
+    print("No grade found for this student in this course.")
 
 def delete_grade():
-     students
-
-     
+    students = ReadJson("students.json")
+    courses = ReadJson("courses.json")
+    student_code = get_valid_code("Enter student code: ", students)
+    course_code = get_valid_code("Enter course code: ", courses)
+    filename = f"{course_code}.csv"
+    if os.path.isfile(filename):
+        data = read_csv(filename)
+        new_data = [row for row in data if not (row["ID"] == student_code and row["Course Code"] == course_code)]
+        write_csv(filename, new_data)
+        print("Grade Deleted Successfully")
+    else:
+        print("No grades found for this course.")
