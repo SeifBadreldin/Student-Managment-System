@@ -53,6 +53,15 @@ def write_csv(filename, data):
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)
+        
+def writetocsv(filename, data):
+    file_exists = os.path.isfile(filename)
+    with open(filename, 'a', newline='') as csvfile:
+        fieldnames = data.keys()
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(data)
 
 def get_valid_code(prompt, dictionary):
     while True:

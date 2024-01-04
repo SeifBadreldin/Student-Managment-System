@@ -8,25 +8,20 @@ def add_grade():
     courses = ReadJson("courses.json")
     student_code = get_valid_code("Enter student code: ", students)
     course_code = get_valid_code("Enter course code: ", courses)
-    Grade_Number = set_grade()
-    Grade_Letter = calculate_grade_letter(Grade_Number)
-    data = {"ID": student_code, "Course Code": course_code, "Grade in Numbers": Grade_Number, "Grade in Letters": Grade_Letter}
     filename = f"{course_code}.csv"
-    file_exists = os.path.isfile(filename)
-    if file_exists:
+    if os.path.isfile(filename):
         with open(filename, 'r') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row["ID"] == student_code and row["Course Code"] == course_code:
                     print("This student already has a grade for this course.")
                     return
-    with open(filename, 'a', newline='') as csvfile:
-        fieldnames = data.keys()
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        if not file_exists:
-            writer.writeheader()
-        writer.writerow(data)
+    Grade_Number = set_grade()
+    Grade_Letter = calculate_grade_letter(Grade_Number)
+    data = {"ID": student_code, "Course Code": course_code, "Grade in Numbers": Grade_Number, "Grade in Letters": Grade_Letter}
+    writetocsv(filename, data)
     print("Grade Added Successfully")
+
 
 def edit_grade():
     students = ReadJson("students.json")
