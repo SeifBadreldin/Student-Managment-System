@@ -3,53 +3,6 @@ from students import *
 from courses import *
 from utility import *
 
-def get_valid_code(prompt, dictionary):
-    while True:
-        code = input(prompt)
-        if isinstance(list(dictionary.keys())[0], str):
-            code = str(code)
-        if code in dictionary.keys():
-            return code
-        print("Invalid code. Please try again.")
-
-def set_grade():
-    while True:
-        grade = int(input("Enter grade: "))
-        if 0 <= grade <= 100:
-            return grade
-        print("Invalid grade. Please enter a grade between 0 and 100.")
-
-def calculate_grade_letter(grade):
-    if grade >= 95:
-        return 'A+'
-    elif grade >= 90:
-        return 'A'
-    elif grade >= 85:
-        return 'A-'
-    elif grade >= 80:
-        return 'B+'
-    elif grade >= 75:
-        return 'B'
-    elif grade >= 70:
-        return 'B-'
-    elif grade >= 65:
-        return 'C+'
-    elif grade >= 60:
-        return 'C'
-    elif grade >= 57:
-        return 'C-'
-    elif grade >= 54:
-        return 'D+'
-    elif grade >= 50:
-        return 'D'
-    else:
-        return 'F'
-
-import csv
-from students import *
-from courses import *
-from utility import *
-
 def add_grade():
     students = ReadJson("students.json")
     courses = ReadJson("courses.json")
@@ -86,7 +39,7 @@ def edit_grade():
         for row in data:
             if row["ID"] == student_code and row["Course Code"] == course_code:
                 print("==============")
-                print("Current grade: ", row["Grade"])
+                print("Current grade: ", calculate_grade_number(row["Grade"]))
                 grade = set_grade()
                 grade_letter = calculate_grade_letter(grade)
                 row["Grade"] = grade_letter
@@ -106,8 +59,8 @@ def view_grade():
         for row in data:
             if row["ID"] == student_code and row["Course Code"] == course_code:
                 print("==============")
-                print("Student Code: ", row["ID"])
-                print("Course Code: ", row["Course Code"])
+                print("Student Code:", row["ID"])
+                print("Course Code:", row["Course Code"])
                 print("Grade:", row["Grade"])
                 print("==============")
                 return
@@ -116,8 +69,8 @@ def view_grade():
 def delete_grade():
     students = ReadJson("students.json")
     courses = ReadJson("courses.json")
-    student_code = get_valid_code("Enter student code: ", students)
-    course_code = get_valid_code("Enter course code: ", courses)
+    student_code = get_valid_code("Enter student code:", students)
+    course_code = get_valid_code("Enter course code", courses)
     filename = f"{course_code}.csv"
     if os.path.isfile(filename):
         data = read_csv(filename)

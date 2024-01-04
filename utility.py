@@ -50,3 +50,71 @@ def write_csv(filename, data):
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)
+
+def get_valid_code(prompt, dictionary):
+    while True:
+        code = input(prompt)
+        if isinstance(list(dictionary.keys())[0], str):
+            code = str(code)
+        if code in dictionary.keys():
+            return code
+        print("Invalid code. Please try again.")
+
+def set_grade():
+    while True:
+        grade = int(input("Enter grade: "))
+        if 0 <= grade <= 100:
+            return grade
+        print("Invalid grade. Please enter a grade between 0 and 100.")
+
+def calculate_grade_letter(grade):
+    if grade >= 95:
+        return 'A+'
+    elif grade >= 90:
+        return 'A'
+    elif grade >= 85:
+        return 'A-'
+    elif grade >= 80:
+        return 'B+'
+    elif grade >= 75:
+        return 'B'
+    elif grade >= 70:
+        return 'B-'
+    elif grade >= 65:
+        return 'C+'
+    elif grade >= 60:
+        return 'C'
+    elif grade >= 57:
+        return 'C-'
+    elif grade >= 54:
+        return 'D+'
+    elif grade >= 50:
+        return 'D'
+    else:
+        return 'F'
+
+def calculate_grade_number(grade_letter):
+    if grade_letter == 'A+':
+        return 95
+    elif grade_letter == 'A':
+        return 90
+    elif grade_letter == 'A-':
+        return 85
+    elif grade_letter == 'B+':
+        return 80
+    elif grade_letter == 'B':
+        return 75
+    elif grade_letter == 'B-':
+        return 70
+    elif grade_letter == 'C+':
+        return 65
+    elif grade_letter == 'C':
+        return 60
+    elif grade_letter == 'C-':
+        return 57
+    elif grade_letter == 'D+':
+        return 54
+    elif grade_letter == 'D':
+        return 50
+    else:
+        return "0 - 49"
