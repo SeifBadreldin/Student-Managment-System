@@ -56,28 +56,40 @@ def add_grade():
     data = {"Name": students[student_code]["name"], "ID": student_code, "Course Code": course_code, "Course Name": courses[course_code]["name"], "Grade": f"{grade}%", "Grade Letter": grade_letter}
     WriteCsv("grades.csv", data.keys(), data)
     print("Grade Added Successfully")
-    
+
 def edit_grade():
-    grades = ReadCsv("grades.csv")
-    student_code = get_valid_code("Enter student code: ", grades)
-    course_code = get_valid_code("Enter course code: ", grades)
+    students = ReadJson("students.json")
+    courses = ReadJson("courses.json")
+    student_code = get_valid_code("Enter student code to edit grade: ", students)
+    course_code = get_valid_code("Enter course code to edit grade: ", courses)
     grade = set_grade()
     grade_letter = calculate_grade_letter(grade)
-    grades[student_code][course_code] = {"Grade": f"{grade}%", "Grade Letter": grade_letter}
-    WriteCsv("grades.csv", grades.keys(), grades)
+    data = {"Name": students[student_code]["name"], "ID": student_code, "Course Code": course_code, "Course Name": courses[course_code]["name"], "Grade": f"{grade}%", "Grade Letter": grade_letter}
+    WriteCsv("grades.csv", data.keys(), data)
     print("Grade Edited Successfully")
 
+
+    
 def view_grade():
-    grades = ReadCsv("grades.csv")
-    student_code = get_valid_code("Enter student code: ", grades)
-    course_code = get_valid_code("Enter course code: ", grades)
-    print("Grade: ", grades[student_code][course_code]["Grade"])
-    print("Grade Letter: ", grades[student_code][course_code]["Grade Letter"])
+
+    grades = ReadCsv('grades.csv')
+    for row in grades:
+        print(row)
+    grades = ReadCsv('grades.csv')
+    for row in grades:
+        if row[1] == student_code and row[2] == course_code:
+            row[4] = f"{grade}%"
+            row[5] = grade_letter
+            break
+    WriteCsv('grades.csv', grades[0].keys(), grades)
+    print("Grade Edited Successfully")
 
 def delete_grade():
-    grades = ReadCsv("grades.csv")
-    student_code = get_valid_code("Enter student code: ", grades)
-    course_code = get_valid_code("Enter course code: ", grades)
-    del grades[student_code][course_code]
-    WriteCsv("grades.csv", grades.keys(), grades)
+    students = ReadJson("students.json")
+    courses = ReadJson("courses.json")
+    student_code = get_valid_code("Enter student code to delete grade: ", students)
+    course_code = get_valid_code("Enter course code to delete grade: ", courses)
+    grades = ReadCsv('grades.csv')
+    grades = [row for row in grades if not (row[1] == student_code and row[2] == course_code)]
+    WriteCsv('grades.csv', grades[0].keys(), grades)
     print("Grade Deleted Successfully")

@@ -45,12 +45,13 @@ def edit_course():
     if code in courses.keys():    
         print("==============")
         course=courses[code]
-        course["code"]=input("enter the new code : ")
-        course["name"]=input("enter the new name : ")
-        course["maxdagree"]=input("enter the new max dagree : ")
-        courses[code]=courses
-        writeJson(courses, "courses.json")
-    else:print("sorry code not exisit,try again...")
+        course["name"]=input("enter the new name : ").strip().title().replace("  "," ")
+        course["maxdaegree"]=input("enter the new maxdagree: ").strip()
+        courses[code]=course
+        writeJson(courses,"courses.json")
+    else:
+        print("sorry code not exisit,try again...")
+
 
 def delete_course():
     global courses
