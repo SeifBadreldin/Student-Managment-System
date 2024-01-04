@@ -20,7 +20,12 @@ def add_grade():
                 if row["ID"] == student_code and row["Course Code"] == course_code:
                     print("This student already has a grade for this course.")
                     return
-    write_csv(filename, data, file_exists)
+    with open(filename, 'a', newline='') as csvfile:
+        fieldnames = data.keys()
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(data)
     print("Grade Added Successfully")
 
 def edit_grade():
