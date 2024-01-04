@@ -15,7 +15,7 @@ while True:
     "4":"Exit"})
 
     if main_choice == "1":
-            liststudents()
+            list_students()
             print("==============")
             print("1. Add Student")
             print("2. Edit student")
@@ -36,7 +36,7 @@ while True:
 
 
     if main_choice=="2":
-        liststcourses()
+        list_courses()
         print("==============")
         print("Student Management System Operation ")
         print("==============")

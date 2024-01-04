@@ -1,65 +1,69 @@
 from utility import *
+import os
 
-courses={}
+courses = {}
 
-def liststcourses():
+def list_courses():
     global courses
-    courses=ReadJson("courses.json")
-    print("courses list")
+    courses = ReadJson("courses.json")
+    print("Course List:")
     print("============")
-    for code in courses.keys():
-        course=courses[code]
-        print("{}:{}".format(code,course["name"]))
+    for course_code in courses.keys():
+        course = courses[course_code]
+        print("{}: {}".format(course_code, course["Course name"]))
 
 def add_course():
+    global courses
     courses = ReadJson("courses.json")
     course = {}
-    course_code = input("Enter code: ")
+    course_code = input("Enter course code: ")
     if course_code in courses.keys():
         print("This course already exists.")
     else:
         course["code"] = course_code
-        course["name"] = input("Enter name: ")
-        course["Max degree"] = input("Enter Max Degree: ")
+        course["Course name"] = input("Enter Course name: ")
+        course["Max Degree"] = input("Enter max degree: ")
         courses[course_code] = course
         writeJson(courses, "courses.json")
-        print("Course Added Successfully")
+        print("Course has been added successfully.")
 
 def edit_course():
     global courses
-    code=(input("enter the code: "))
-    courses=ReadJson("courses.json")
-    if code in courses.keys():    
+    course_code = input("Enter course code: ")
+    courses = ReadJson("courses.json")
+    if course_code in courses.keys():    
         print("==============")
-        course=courses[code]
-        course["name"]=input("enter the new name : ").strip().title().replace("  "," ")
-        course["maxdaegree"]=input("enter the new maxdagree: ").strip()
-        courses[code]=course
-        writeJson(courses,"courses.json")
+        course = courses[course_code]
+        course["Course name"] = input("Enter the new course name: ").strip().title().replace("  "," ")
+        course["Max Degree"] = input("Enter the new max degree: ").strip()
+        courses[course_code] = course
+        writeJson(courses , "courses.json")
     else:
-        print("sorry code not exisit,try again...")
+        print("Sorry, the course does not exist. Please try again.")
 
 def view_course():
     global courses
     while True:
-        code=(input("enter the code: "))
-        courses=ReadJson("courses.json")
-        if code in courses.keys():       
+        course_code = input("Enter course code: ")
+        courses = ReadJson("courses.json")
+        if course_code in courses.keys():       
             print("==============")
-            course = courses[code]
-            print("code:{}".format(course["code"]))
-            print("name:{}".format(course["name"]))
-            print("Max degree:{}".format(course["maxdegree"]))
+            course = courses[course_code]
+            print("Course Code: {}".format(course["code"]))
+            print("course Name: {}".format(course["course name"]))
+            print("Max Degree: {}".format(course["Max Degree"]))
             break
         else:
-             print("sorry code not exisit,try again...")
+             print("Sorry, the course does not exist. Please try again.")
+   
 
 def delete_course():
     global courses
-    code=(input("enter the code: "))
-    courses=ReadJson("courses.json")
-    if code in courses.keys():       
-        del courses[code]
+
+    course_code = input("Enter course code: ")
+    courses = ReadJson("courses.json")
+    if course_code in courses.keys():       
+        del courses[course_code]
         writeJson(courses,"courses.json")
     else:
-        print("sorry code not exisit,try again...")
+        print("Sorry, the course does not exist. Please try again.")

@@ -85,6 +85,7 @@ def edit_grade():
         data = read_csv(filename)
         for row in data:
             if row["ID"] == student_code and row["Course Code"] == course_code:
+                print("==============")
                 print("Current grade: ", row["Grade"])
                 grade = set_grade()
                 grade_letter = calculate_grade_letter(grade)
@@ -104,7 +105,11 @@ def view_grade():
         data = read_csv(filename)
         for row in data:
             if row["ID"] == student_code and row["Course Code"] == course_code:
-                print("Grade: ", row["Grade"])
+                print("==============")
+                print("Student Code: ", row["ID"])
+                print("Course Code: ", row["Course Code"])
+                print("Grade:", row["Grade"])
+                print("==============")
                 return
     print("No grade found for this student in this course.")
 
