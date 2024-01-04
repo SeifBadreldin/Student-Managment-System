@@ -8,9 +8,9 @@ def add_grade():
     courses = ReadJson("courses.json")
     student_code = get_valid_code("Enter student code: ", students)
     course_code = get_valid_code("Enter course code: ", courses)
-    grade = set_grade()
-    grade_letter = calculate_grade_letter(grade)
-    data = {"ID": student_code, "Course Code": course_code, "Grade": grade_letter}
+    Grade_Number = set_grade()
+    Grade_Letter = calculate_grade_letter(Grade_Number)
+    data = {"ID": student_code, "Course Code": course_code, "Grade in Numbers": Grade_Number, "Grade in Letters": Grade_Letter}
     filename = f"{course_code}.csv"
     file_exists = os.path.isfile(filename)
     if file_exists:
@@ -39,10 +39,10 @@ def edit_grade():
         for row in data:
             if row["ID"] == student_code and row["Course Code"] == course_code:
                 print("==============")
-                print("Current grade: ", calculate_grade_number(row["Grade"]))
-                grade = set_grade()
-                grade_letter = calculate_grade_letter(grade)
-                row["Grade"] = grade_letter
+                print("Current grade: ", row["Grade in Numbers"])
+                Grade_Number = set_grade()
+                row["Grade in Numbers"] = Grade_Number
+                row["Grade in Letters"] = calculate_grade_letter(Grade_Number)  
         write_csv(filename, data)
         print("Grade Edited Successfully")
     else:
@@ -61,7 +61,8 @@ def view_grade():
                 print("==============")
                 print("Student Code:", row["ID"])
                 print("Course Code:", row["Course Code"])
-                print("Grade:", row["Grade"])
+                print("Grade in Numbers:", row["Grade in Numbers"])
+                print("Grade in Letters:", row["Grade in Letters"])
                 print("==============")
                 return
     print("No grade found for this student in this course.")

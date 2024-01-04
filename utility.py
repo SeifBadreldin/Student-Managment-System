@@ -92,29 +92,3 @@ def calculate_grade_letter(grade):
         return 'D'
     else:
         return 'F'
-
-def calculate_grade_number(grade_letter):
-    if grade_letter == 'A+':
-        return 95
-    elif grade_letter == 'A':
-        return 90
-    elif grade_letter == 'A-':
-        return 85
-    elif grade_letter == 'B+':
-        return 80
-    elif grade_letter == 'B':
-        return 75
-    elif grade_letter == 'B-':
-        return 70
-    elif grade_letter == 'C+':
-        return 65
-    elif grade_letter == 'C':
-        return 60
-    elif grade_letter == 'C-':
-        return 57
-    elif grade_letter == 'D+':
-        return 54
-    elif grade_letter == 'D':
-        return 50
-    else:
-        return "0 - 49"
