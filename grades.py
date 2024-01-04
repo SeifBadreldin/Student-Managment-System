@@ -71,11 +71,13 @@ def delete_grade():
     students = ReadJson("students.json")
     courses = ReadJson("courses.json")
     student_code = get_valid_code("Enter student code:", students)
-    course_code = get_valid_code("Enter course code", courses)
+    course_code = get_valid_code("Enter course code:", courses)
     filename = f"{course_code}.csv"
     if os.path.isfile(filename):
         data = read_csv(filename)
         new_data = [row for row in data if not (row["ID"] == student_code and row["Course Code"] == course_code)]
+        if not new_data:
+            new_data = [{}]
         write_csv(filename, new_data)
         print("Grade Deleted Successfully")
     else:

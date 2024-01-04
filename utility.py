@@ -46,7 +46,10 @@ def read_csv(filename):
 
 def write_csv(filename, data):
     with open(filename, 'w', newline='') as csvfile:
-        fieldnames = data[0].keys()
+        if data:
+            fieldnames = data[0].keys()
+        else:
+            fieldnames = ['ID', 'Course Code', 'Grade in Numbers', 'Grade in Letters']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)
