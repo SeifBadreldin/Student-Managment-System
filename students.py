@@ -1,6 +1,8 @@
 from utility import * 
 import os
+
 students={}
+
 def liststudents():
     global students
     students=ReadJson("students.json")
@@ -10,21 +12,20 @@ def liststudents():
         student=students[code]
         print("{}:{}".format(code,student["name"]))
 
-
-
 def add_student():
     global students
-    students=ReadJson("students.json")
-    student={}
-    student["name"]=input("enter name : ")
-    student["code"]=input("enter code : ")
-    student["Birthdate"]=input("enter Birthdate : ")
-    student["age"]=input("enter age : ")
-    student["country"]=input("enter country : ")
-    code=student["code"]
-    students[code]=student
-    writeJson(students , "students.json")
-    return
+    students = ReadJson("students.json")
+    student = {}
+    student_code = input("Enter code: ")
+    if student_code in students.keys():
+        print("This student already exists.")
+    else:
+        student["code"] = student_code
+        student["name"] = input("Enter name: ")
+        student["Birthdate"] = input("Enter Birthdate: ")
+        students[student_code] = student
+        writeJson(students, "students.json")
+        print("Student Added Successfully")
 
 def edit_student():
     global students
@@ -35,8 +36,6 @@ def edit_student():
         student=students[code]
         student["name"]=input("enter the new name : ").strip().title().replace("  "," ")
         student["Birthdate"]=input("enter the new Birthdate : ").strip()
-        student["age"]=input("enter the new age : ").strip()
-        student["country"]=input("enter the new country : ").strip().capitalize()
         students[code]=student
         writeJson(students , "students.json")
     else:
@@ -53,8 +52,6 @@ def view_student():
             print("code:{}".format(student["code"]))
             print("name:{}".format(student["name"]))
             print("Birthdate:{}".format(student["Birthdate"]))
-            print("age:{}".format(student["age"]))
-            print("country:{}".format(student["country"]))
             break
         else:
              print("sorry code not exisit,try again...")

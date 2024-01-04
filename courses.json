@@ -1,1 +1,23 @@
-{"CET111": {"code": "CET111", "name": "computer programming", "maxdegree": "100"}, "EPT111": {"code": "EPT111", "name": "Cad", "maxdegree": "100", "maxdaegree": "100"}, "GEN11": {"code": "GEN11", "name": "Apllied Maths", "maxdegree": "100"}, "Hum121": {"code": "Hum121", "name": "Law", "maxdegree": "100"}}
+{
+	"CET111": {
+		"code": "CET111",
+		"name": "computer programming",
+		"maxdegree": "100"
+	},
+	"EPT111": {
+		"code": "EPT111",
+		"name": "Cad",
+		"maxdegree": "100",
+		"maxdaegree": "100"
+	},
+	"GEN11": {
+		"code": "GEN11",
+		"name": "Apllied Maths",
+		"maxdegree": "100"
+	},
+	"HUM121": {
+		"code": "Hum121",
+		"name": "Law",
+		"maxdegree": "100"
+	}
+}
