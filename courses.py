@@ -22,6 +22,7 @@ def add_course():
     else:
         course["code"] = course_code
         course["Course name"] = input("Enter Course name: ")
+        course["Credit Hours"] = input("Enter Credit Hours: ")
         course["Max Degree"] = input("Enter max degree: ")
         courses[course_code] = course
         writeJson(courses, "courses.json")
@@ -35,6 +36,7 @@ def edit_course():
         print("==============")
         course = courses[course_code]
         course["Course name"] = input("Enter the new course name: ").strip().title().replace("  "," ")
+        course["Credit Hours"] = input("Enter Credit Hours: ").strip()
         course["Max Degree"] = input("Enter the new max degree: ").strip()
         courses[course_code] = course
         writeJson(courses , "courses.json")
@@ -51,7 +53,8 @@ def view_course():
             course = courses[course_code]
             print("Course Code: {}".format(course["Course code"]))
             print("course Name: {}".format(course["Course name"]))
-            print("Max Degree: {}".format(course["max degree"]))
+            print("Credit Hours: {}".format(course["Credit Hours"]))
+            print("Max Degree: {}".format(course["Max Degree"]))
             break
         else:
              print("Sorry, the course does not exist. Please try again.")

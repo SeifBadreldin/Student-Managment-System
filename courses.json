@@ -1,1 +1,26 @@
-{"CET111": {"Course code": "CET111", "Course name": "computer programming", "max degree": "100"}, "EPT111": {"Course code": "EPT111", "Course name": "English", "max degree": "100", "Max Degree": "100"}, "GEN11": {"Course code": "GEN11", "Course name": "Apllied Maths", "max degree": "100"}, "HUM121": {"Course code": "Hum121", "Course name": "Law", "max degree": "100"}}
+{
+	"CET111": {
+		"Course code": "CET111",
+		"Course name": "computer programming",
+		"Credit Hours": "3",
+		"Max Degree": "100"
+	},
+	"EPT111": {
+		"Course code": "EPT111",
+		"Course name": "English",
+		"Credit Hours": "4",
+		"Max Degree": "100"
+	},
+	"GEN11": {
+		"Course code": "GEN11",
+		"Course name": "Apllied Maths",
+		"Credit Hours": "2",
+		"Max Degree": "100"
+	},
+	"HUM121": {
+		"Course code": "Hum121",
+		"Course name": "Law",
+		"Credit Hours": "3",
+		"Max Degree": "100"
+	}
+}
