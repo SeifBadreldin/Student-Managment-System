@@ -5,6 +5,12 @@ def Generate_Results():
     students = ReadJson('students.json')
     for student_code, student_info in students.items():
         with open(f"{student_info['Student Code']}.html", 'w') as f:
+            f.write('<!DOCTYPE html>\n')
+            f.write('<html>\n')
+            f.write('<head>\n')
+            f.write('<link rel="stylesheet" type="text/css" href="results.css">\n')
+            f.write('</head>\n')
+            f.write('<body>\n')
             f.write(f"<h1>{student_info['Student name']}</h1>")
             f.write(f"<p>Student Code: {student_info['Student Code']}</p>")
             f.write(f"<p>Birthdate: {student_info['Birthdate']}</p>")
@@ -30,3 +36,5 @@ def Generate_Results():
             gpa = total_points / total_credits if total_credits else 0
             f.write(f"<h2>Total Credit Hours: {total_credits}</h2>")
             f.write(f"<h2>GPA: {gpa:.2f}</h2>")
+            f.write('</body>\n')
+            f.write('</html>\n')
