@@ -2,6 +2,8 @@ from utility import *
 from students import *
 from courses import *
 from grades import *
+from Results import *
+from Analysis import *
 
 while True:
     os.system("cls")
@@ -98,8 +100,7 @@ while True:
         #  else:
         #     print("wrong choice,try again!...")
 
-    # if main_choice=="5":
-        #  Generate_Results()
+    if main_choice=="5": Generate_Results()
              
     if main_choice=="6":break
 

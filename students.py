@@ -1,5 +1,4 @@
 from utility import * 
-import os
 
 students = {}
 
@@ -16,7 +15,7 @@ def add_student():
     global students
     students = ReadJson("students.json")
     student = {}
-    student_code = input("Enter student code: ")
+    student_code = input("Enter Student Code: ")
     if student_code in students.keys():
         print("This student already exists.")
     else:
@@ -29,7 +28,7 @@ def add_student():
 
 def edit_student():
     global students
-    student_code = input("Enter student code: ")
+    student_code = input("Enter Student Code: ")
     students = ReadJson("students.json")
     if student_code in students.keys():    
         print("==============")
@@ -44,7 +43,7 @@ def edit_student():
 def view_student():
     global students
     while True:
-        student_code = input("Enter student code: ")
+        student_code = input("Enter Student Code: ")
         students = ReadJson("students.json")
         if student_code in students.keys():       
             print("==============")
@@ -60,7 +59,7 @@ def view_student():
 def delete_student():
     global students
 
-    student_code = input("Enter student code: ")
+    student_code = input("Enter Student Code: ")
     students = ReadJson("students.json")
     if student_code in students.keys():       
         del students[student_code]

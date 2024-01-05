@@ -1,12 +1,10 @@
 import csv
-from students import *
-from courses import *
 from utility import *
 
 def add_grade():
     students = ReadJson("students.json")
     courses = ReadJson("courses.json")
-    student_code = get_valid_code("Enter student code: ", students)
+    student_code = get_valid_code("Enter Student Code: ", students)
     course_code = get_valid_code("Enter course code: ", courses)
     filename = f"{course_code}.csv"
     if os.path.isfile(filename):
@@ -26,7 +24,7 @@ def add_grade():
 def edit_grade():
     students = ReadJson("students.json")
     courses = ReadJson("courses.json")
-    student_code = get_valid_code("Enter student code: ", students)
+    student_code = get_valid_code("Enter Student Code: ", students)
     course_code = get_valid_code("Enter course code: ", courses)
     filename = f"{course_code}.csv"
     if os.path.isfile(filename):
@@ -46,7 +44,7 @@ def edit_grade():
 def view_grade():
     students = ReadJson("students.json")
     courses = ReadJson("courses.json")
-    student_code = get_valid_code("Enter student code: ", students)
+    student_code = get_valid_code("Enter Student Code: ", students)
     course_code = get_valid_code("Enter course code: ", courses)
     filename = f"{course_code}.csv"
     if os.path.isfile(filename):

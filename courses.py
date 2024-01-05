@@ -1,5 +1,4 @@
 from utility import *
-import os
 
 courses = {}
 
