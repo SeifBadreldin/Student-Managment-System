@@ -9,10 +9,12 @@ while True:
     print("Students Management System Program")
     print("============")
     main_choice=process_menu({
-    "1":"student information",
-    "2":"course information",
-    "3":"grade information" ,
-    "4":"Exit"})
+    "1":"Student information",
+    "2":"Course information",
+    "3":"Grade information" ,
+    "4":"Analysis" ,
+    "5":"Generate students results" ,
+    "6":"Exit"})
 
     if main_choice == "1":
             list_students()
@@ -78,7 +80,27 @@ while True:
             input("press any key to continue...")
          else:
             print("wrong choice,try again!...")
-    
 
-    if main_choice=="4":break
+    if main_choice=="4":
+         print("==============")
+         print("Student Management System Operation ")
+         print("==============")
+         print("1. Student result per course (Bar Chart)")
+         print("2. Course Registeration (Pie Chart)")
+         print("3. Exit")
+         print("==============")
+        #  second_operator=int(input("enter the operator you need: "))
+        #  if second_operator>=1 and second_operator<=5:
+        #     if second_operator==1:Bar_chart()
+        #     elif second_operator==2:Pie_Chart()
+        #     elif second_operator==3: continue
+        #     input("press any key to continue...")
+        #  else:
+        #     print("wrong choice,try again!...")
+
+    # if main_choice=="5":
+        #  Generate_Results()
+             
+    if main_choice=="6":break
+
 
