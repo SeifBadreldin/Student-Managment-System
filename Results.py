@@ -3,7 +3,7 @@ from utility import *
 def Generate_Results():
     courses = ReadJson('courses.json')
     students = ReadJson('students.json')
-    for student_code, student_info in students.items():
+    for student_info in students.items():
         with open(f"{student_info['Student Code']}.html", 'w') as f:
             f.write('<!DOCTYPE html>\n')
             f.write('<html>\n')
