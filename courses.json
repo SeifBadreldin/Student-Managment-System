@@ -11,14 +11,14 @@
 		"Credit Hours": "4",
 		"Max Degree": "100"
 	},
-	"GEN11": {
-		"Course code": "GEN11",
+	"GEN111": {
+		"Course code": "GEN111",
 		"Course name": "Apllied Maths",
 		"Credit Hours": "2",
 		"Max Degree": "100"
 	},
-	"HUM121": {
-		"Course code": "Hum121",
+	"HUM111": {
+		"Course code": "Hum111",
 		"Course name": "Law",
 		"Credit Hours": "3",
 		"Max Degree": "100"

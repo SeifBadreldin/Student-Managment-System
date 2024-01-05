@@ -1,13 +1,8 @@
 {
 	"230100575": {
 		"Student Code": "230100575",
-		"Student name": "Sosa",
+		"Student name": "Seif",
 		"Birthdate": "10/11/2005"
-	},
-	"230100600": {
-		"Student Code": "230100600",
-		"Student name": "youssef",
-		"Birthdate": "3/1/2003"
 	},
 	"230100700": {
 		"Student Code": "230100700",
@@ -16,17 +11,12 @@
 	},
 	"230100800": {
 		"Student Code": "230100800",
-		"Student name": "sara",
+		"Student name": "Youssef",
 		"Birthdate": "10/2/2005"
 	},
 	"230100900": {
 		"Student Code": "230100900",
 		"Student name": "mohanad",
 		"Birthdate": "14/4/2004"
-	},
-	"230100876": {
-		"Student Code": "230100876",
-		"Student name": "tarek",
-		"Birthdate": "20/11/2003"
 	}
 }

@@ -101,7 +101,9 @@ while True:
         #     print("wrong choice,try again!...")
 
     if main_choice=="5": Generate_Results()
-             
+    print("Results are successfully generated")   
+    input("press any key to continue...")
+    
     if main_choice=="6":break
 
 
