@@ -6,11 +6,11 @@ students = {}
 def list_students():
     global students
     students = ReadJson("students.json")
-    print("Student List:")
+    print("students List:")
     print("============")
     for student_code in students.keys():
-        student = students[student_code]
-        print("{}: {}".format(student_code, student["Student Name"]))
+        student= students[student_code]
+        print("{}: {}".format(student_code, student["Student name"]))
 
 def add_student():
     global students
@@ -21,7 +21,7 @@ def add_student():
         print("This student already exists.")
     else:
         student["Student Code"] = student_code
-        student["Studennt Name"] = input("Enter Student Name: ")
+        student["Student name"] = input("Enter Student Name: ")
         student["Birthdate"] = input("Enter birthdate: ")
         students[student_code] = student
         writeJson(students, "students.json")
@@ -34,7 +34,7 @@ def edit_student():
     if student_code in students.keys():    
         print("==============")
         student = students[student_code]
-        student["Student Name"] = input("Enter the new Student Name: ").strip().title().replace("  "," ")
+        student["Student name"] = input("Enter the new Student Name: ").strip().title().replace("  "," ")
         student["Birthdate"] = input("Enter the new birthdate: ").strip()
         students[student_code] = student
         writeJson(students , "students.json")
@@ -50,7 +50,7 @@ def view_student():
             print("==============")
             student = students[student_code]
             print("Student Code: {}".format(student["Student Code"]))
-            print("Student Name: {}".format(student["Student Name"]))
+            print("Student Name: {}".format(student["Student name"]))
             print("Birthdate: {}".format(student["Birthdate"]))
             break
         else:

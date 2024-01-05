@@ -49,9 +49,9 @@ def view_course():
         if course_code in courses.keys():       
             print("==============")
             course = courses[course_code]
-            print("Course Code: {}".format(course["code"]))
-            print("course Name: {}".format(course["course name"]))
-            print("Max Degree: {}".format(course["Max Degree"]))
+            print("Course Code: {}".format(course["Course code"]))
+            print("course Name: {}".format(course["Course name"]))
+            print("Max Degree: {}".format(course["max degree"]))
             break
         else:
              print("Sorry, the course does not exist. Please try again.")
