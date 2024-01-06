@@ -56,7 +56,7 @@ def view_course():
         if course_code in courses.keys():       
             print("==============")
             course = courses[course_code]
-            print("Course Code: {}".format(course["code"]))
+            print("Course Code: {}".format(course["Course code"]))
             print("Course Name: {}".format(course["Course name"]))
             print("Credit Hours: {}".format(course["Credit Hours"]))
             print("Max Degree: {}".format(course["Max Degree"]))
