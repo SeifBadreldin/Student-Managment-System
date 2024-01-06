@@ -1,20 +1,40 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; /* Typography */
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Color Scheme */
 }
+
 .container {
     width: 80%;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #fff; /* Color Scheme */
     padding: 20px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Consistency */
 }
+
 h1, h2 {
-    color: #333;
+    color: #333; /* Typography & Color Scheme */
 }
+
 .course {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee; /* Consistency */
     padding: 10px 0;
+}
+
+/* Images and Icons */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Input Validation */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #5B9BD5;
 }

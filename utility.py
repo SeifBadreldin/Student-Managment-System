@@ -3,15 +3,15 @@ import os
 import csv
 
 def process_menu(items):
-        for key in items.keys():
-            print("{}:{}".format(key,items[key]))
+    for key in items.keys():
+        print("{}:{}".format(key,items[key]))
+    print("==============")
+    while True:
+        choice=(input("enter your choice: "))
         print("==============")
-        while True:
-            choice=(input("enter your choice: "))
-            print("==============")
-            if choice in items.keys():return choice
-            else:
-                print("wrong choice , try again !...")
+        if choice in items.keys():return choice
+        else:
+            print("wrong choice , try again !...")
 
 def writeJson(items,filepath):
     file=open(filepath,"w")
@@ -74,9 +74,9 @@ def get_valid_code(prompt, dictionary):
 
 def set_grade():
     while True:
-        grade = int(input("Enter grade: "))
-        if 0 <= grade <= 100:
-            return grade
+        grade = input("Enter grade: ")
+        if grade.isdigit() and 0 <= int(grade) <= 100:
+            return int(grade)
         print("Invalid grade. Please enter a grade between 0 and 100.")
 
 def calculate_grade_letter(grade):

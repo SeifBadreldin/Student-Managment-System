@@ -1,4 +1,4 @@
-from utility import *
+from utility import * 
 
 courses = {}
 
@@ -7,7 +7,7 @@ def list_courses():
     courses = ReadJson("courses.json")
     print("Course List:")
     print("============")
-    for course_code in courses.keys():
+    for course_code in sorted(courses.keys(), reverse=True):
         course = courses[course_code]
         print("{}: {}".format(course_code, course["Course name"]))
 
@@ -15,7 +15,12 @@ def add_course():
     global courses
     courses = ReadJson("courses.json")
     course = {}
-    course_code = input("Enter course code: ")
+    while True:
+        course_code = input("Enter course code: ").upper()
+        if len(course_code) != 6:
+            print("Invalid input. Course code should contain exactly 6 characters.")
+        else:
+            break
     if course_code in courses.keys():
         print("This course already exists.")
     else:
@@ -39,6 +44,7 @@ def edit_course():
         course["Max Degree"] = input("Enter the new max degree: ").strip()
         courses[course_code] = course
         writeJson(courses , "courses.json")
+        print("course edited sucssefully")
     else:
         print("Sorry, the course does not exist. Please try again.")
 
@@ -50,8 +56,8 @@ def view_course():
         if course_code in courses.keys():       
             print("==============")
             course = courses[course_code]
-            print("Course Code: {}".format(course["Course code"]))
-            print("course Name: {}".format(course["Course name"]))
+            print("Course Code: {}".format(course["code"]))
+            print("Course Name: {}".format(course["Course name"]))
             print("Credit Hours: {}".format(course["Credit Hours"]))
             print("Max Degree: {}".format(course["Max Degree"]))
             break
@@ -67,5 +73,6 @@ def delete_course():
     if course_code in courses.keys():       
         del courses[course_code]
         writeJson(courses,"courses.json")
+        print("course deleted sucssefully")
     else:
         print("Sorry, the course does not exist. Please try again.")

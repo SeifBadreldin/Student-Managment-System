@@ -1,11 +1,5 @@
 import matplotlib.pyplot as plt
-from utility import *
-from utility import *
-from students import *
-from courses import *
-from grades import *
-from Results import *
-from Analysis import *
+
 
 results = {
     "HUM111": {"seif": 88, "mohanad": 55, "sama": 60,"youssef": 60},
