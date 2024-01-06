@@ -3,7 +3,7 @@ from utility import *
 def Generate_Results():
     courses = ReadJson('courses.json')
     students = ReadJson('students.json')
-    for student_info in students.items():
+    for student_code, student_info in students.items():
         with open(f"{student_info['Student Code']}.html", 'w') as f:
             f.write('<!DOCTYPE html>\n')
             f.write('<html>\n')
@@ -38,3 +38,5 @@ def Generate_Results():
             f.write(f"<h2>GPA: {gpa:.2f}</h2>")
             f.write('</body>\n')
             f.write('</html>\n')
+    print("Results are successfully generated")   
+    input("press any key to continue...")

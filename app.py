@@ -87,22 +87,21 @@ while True:
          print("==============")
          print("Student Management System Operation ")
          print("==============")
-         print("1. Student result per course (Bar Chart)")
+         print("1. Student results per course (Bar Chart)")
          print("2. Course Registeration (Pie Chart)")
          print("3. Exit")
          print("==============")
-        #  second_operator=int(input("enter the operator you need: "))
-        #  if second_operator>=1 and second_operator<=5:
-        #     if second_operator==1:Bar_chart()
-        #     elif second_operator==2:Pie_Chart()
-        #     elif second_operator==3: continue
-        #     input("press any key to continue...")
-        #  else:
-        #     print("wrong choice,try again!...")
+         second_operator=int(input("enter the operator you need: "))
+         if second_operator>=1 and second_operator<=3:
+            if second_operator==1:Bar_chart(results)
+            elif second_operator==2:Pie_chart()
+            elif second_operator==3: continue
+            input("press any key to continue...")
+         else:
+            print("wrong choice,try again!...")
 
     if main_choice=="5": Generate_Results()
-    print("Results are successfully generated")   
-    input("press any key to continue...")
+    
     
     if main_choice=="6":break
 
